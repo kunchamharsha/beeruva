@@ -102,35 +102,50 @@ functions
     returnfiles(*args, **kwargs)
         Function to return list of files uploaded by the user.
 
-FILE
-    insert.py
+Filename app.py
 
-FUNCTIONS
+functions
+
     addfile(fileid, actualfilename, currentuser)
         Function to store file data in db.
-FILE
-    /Users/ram/safedrive/crud/read.py
 
-FUNCTIONS
+
+Filename read.py
+
+functions
+
     check_access(fileid, currentuser)
         Function to check users access to the requested file.
 
     listofilesuploaded(currentuser)
         Function to return list of files uploaded by a user.
-NAME
-    delete
 
-FILE
-    /Users/ram/safedrive/crud/delete.py
+Filename: delete.py
 
-FUNCTIONS
+functions
     deletefile(fileid, currentuser)
+        Function to delete filedata from the database.
 
 
 #Navigating through the application
 
+webpages
+
 url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
+
 url:'/home'-This page has features to add, delete and download the files the users have uploaded
+
+features
+login: enter username and password to login to the application
+
+logout: click on logout button at the bottom on the left pane
+
+upload: click on an upload button and upload mulitple files at once
+
+delete: right click on the file to get delete option
+
+download:to download the file click on the download button below the file
+
 
 #scope of improvement
 check trello board https://trello.com/invite/b/D4skGYxt/40775ecf4eb4cf338e2f8a48b550533c/open-drive
