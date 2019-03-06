@@ -1,5 +1,5 @@
 # Opendrive
-Opensource self hosted google drive rip-off :P 
+Opensource self hosted file hosting system rip-off :P 
 
 #Prerequisites
 
