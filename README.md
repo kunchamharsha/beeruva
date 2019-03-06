@@ -131,21 +131,21 @@ functions
 
 #webpages
 
-url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
+*url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
 
-url:'/home'-This page has features to add, delete and download the files the users have uploaded
+*url:'/home'-This page has features to add, delete and download the files the users have uploaded
 
 #features
 
-login: enter username and password to login to the application
+*login: enter username and password to login to the application
 
-logout: click on logout button at the bottom on the left pane
+*logout: click on logout button at the bottom on the left pane
 
-upload: click on an upload button and upload mulitple files at once
+*upload: click on an upload button and upload mulitple files at once
 
-delete: right click on the file to get delete option
+*delete: right click on the file to get delete option
 
-download:to download the file click on the download button below the file
+*download:to download the file click on the download button below the file
 
 
 #Development Log
