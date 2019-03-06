@@ -149,11 +149,14 @@ functions
 
 
 #Development Log
+
 Access development log at https://tymline.co/ramharsha/opendrive
 
 #scope of improvement
+
 please raise issues or request feature changes via the issues section in github
 
 #contact details
-For any further queries you can mail me on kunchamharsha@gmail.com,
+
+For any further queries and assistance to setup the drive for your organisation you can mail me on kunchamharsha@gmail.com,
 you can also raise an issue and I will get back to you as soon as possible
