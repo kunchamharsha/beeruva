@@ -21,17 +21,17 @@ ORM Used
 
 Python packages used
 
->flask,
+* flask
 
->flask-admin,
+* flask-admin
 
->sqlalchemy,
+* sqlalchemy
 
->enum,
+* enum
 
->requests,
+* requests
 
->flask-login
+* flask-login
 
 
 #Installation 
@@ -123,6 +123,7 @@ functions
 Filename: delete.py
 
 functions
+
     deletefile(fileid, currentuser)
         Function to delete filedata from the database.
 
@@ -131,9 +132,9 @@ functions
 
 #webpages
 
-*url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
+* url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
 
-*url:'/home'-This page has features to add, delete and download the files the users have uploaded
+* url:'/home'-This page has features to add, delete and download the files the users have uploaded
 
 #features
 
