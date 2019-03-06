@@ -26,7 +26,7 @@ Upcoming Features
 
 ## Prerequisites
 
-Supporterd operating system's
+Supported operating system's
 * mac
 * linux
 
@@ -82,6 +82,12 @@ After this, we are ready to use the tool run the following command
 >python app.py
 
 This will run the server on port number 5000,open browser and search for http://localhost:5000 
+
+
+## Contact Details
+
+For any further queries and **assistance** to setup the drive for your organisation you can mail me on **kunchamharsha@gmail.com**,
+you can also raise an issue and I will get back to you as soon as possible
 
 
 ## Endpoints and descriptions
@@ -152,13 +158,13 @@ functions
 
 # Navigating through the application
 
-## webpages
+## Webpages
 
 * url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
 
 * url:'/home'-This page has features to add, delete and download the files the users have uploaded
 
-## features
+## Features
 
 * login: enter username and password to login to the application
 
@@ -175,11 +181,7 @@ functions
 
 Access development log at [tymline.co/opendrive](https://tymline.co/ramharsha/opendrive)
 
-## scope of improvement
+## Scope of Improvement
 
 please raise issues or request feature changes via the issues section in github
 
-## contact details
-
-For any further queries and **assistance** to setup the drive for your organisation you can mail me on **kunchamharsha@gmail.com**,
-you can also raise an issue and I will get back to you as soon as possible
