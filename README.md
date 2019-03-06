@@ -1,7 +1,11 @@
 # Opendrive
 Opendrive is a self-hosted file cloud storage system. For organisations or individuals who'd like to store their data on their own private cloud open drive helps them manage their files on their server. 
 
-#Prerequisites
+
+## Setup process
+
+
+## Prerequisites
 
 Supporterd operating system's
 * mac
@@ -33,7 +37,7 @@ Python packages used
 * flask-login
 
 
-#Installation 
+## Installation 
 Create a virtualenv
 
 >virtualenv venv
@@ -61,7 +65,7 @@ After this, we are ready to use the tool run the following command
 This will run the server on port number 5000,open browser and search for http://localhost:5000 
 
 
-#Endpoints and descriptions
+## Endpoints and descriptions
 
 Filename app.py
 
@@ -127,9 +131,9 @@ functions
         Function to delete filedata from the database.
 
 
-#Navigating through the application
+# Navigating through the application
 
-#webpages
+## webpages
 
 * url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
 
@@ -148,15 +152,15 @@ functions
 * download:to download the file click on the download button below the file
 
 
-#Development Log
+## Development Log
 
 Access development log at https://tymline.co/ramharsha/opendrive
 
-#scope of improvement
+## scope of improvement
 
 please raise issues or request feature changes via the issues section in github
 
-#contact details
+## contact details
 
 For any further queries and assistance to setup the drive for your organisation you can mail me on kunchamharsha@gmail.com,
 you can also raise an issue and I will get back to you as soon as possible
