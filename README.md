@@ -1,9 +1,9 @@
-# Opendrive
-Opendrive is a self-hosted file cloud storage system. For organisations or individuals who'd like to store their data on their own private cloud open drive helps them manage their files on their server. 
+# Beeruva
+Beeruva is a self-hosted file cloud storage system. For organisations or individuals who'd like to store their data on their own private cloud open drive helps them manage their files on their server. 
 
 ## Description
 
-Opendrive provides 
+Beeruva provides 
 
 * Safe and Authorised access to users files from anywhere (provided you have access to the server)
 * Intuitive interface to upload, download and delete files
@@ -75,7 +75,7 @@ Once this is done, using models build the db and place the file in crud folder u
 
 Move the file from db model from models to crud
 
->mv opendrive.db ../crud/
+>mv beeruva.db ../crud/
 
 After this, we are ready to use the tool run the following command
 
@@ -179,7 +179,7 @@ functions
 
 ## Development Log
 
-Access development log at [tymline.co/opendrive](https://tymline.co/ramharsha/opendrive)
+Access development log at [tymline.co/opendrive](https://tymline.co/ramharsha/beeruva)
 
 ## Scope of Improvement
 
