@@ -139,7 +139,7 @@ functions
 
 * url:'/home'-This page has features to add, delete and download the files the users have uploaded
 
-#features
+## features
 
 * login: enter username and password to login to the application
 
@@ -154,7 +154,7 @@ functions
 
 ## Development Log
 
-Access development log at https://tymline.co/ramharsha/opendrive
+Access development log at [tymline.co/opendrive](https://tymline.co/ramharsha/opendrive)
 
 ## scope of improvement
 
@@ -162,5 +162,5 @@ please raise issues or request feature changes via the issues section in github
 
 ## contact details
 
-For any further queries and assistance to setup the drive for your organisation you can mail me on kunchamharsha@gmail.com,
+For any further queries and **assistance** to setup the drive for your organisation you can mail me on **kunchamharsha@gmail.com**,
 you can also raise an issue and I will get back to you as soon as possible
