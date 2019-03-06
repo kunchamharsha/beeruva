@@ -1,5 +1,5 @@
 # Opendrive
-Opensource self hosted file hosting system rip-off :P 
+Opensource is a self hosted file hosting system.
 
 #Prerequisites
 
@@ -129,13 +129,14 @@ functions
 
 #Navigating through the application
 
-webpages
+#webpages
 
 url:'/'-This is the login and registration page you can signup or sign in to the platform using this page
 
 url:'/home'-This page has features to add, delete and download the files the users have uploaded
 
-features
+#features
+
 login: enter username and password to login to the application
 
 logout: click on logout button at the bottom on the left pane
