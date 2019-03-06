@@ -4,7 +4,7 @@ from sqlalchemy import Column, Boolean, VARCHAR, Integer, String, DateTime, Fore
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.dialects.sqlite import TEXT
 
-engine = create_engine('sqlite:///opendrive.db', encoding="utf-8")
+engine = create_engine('sqlite:///beeruva.db', encoding="utf-8")
 
 Base = declarative_base() 
 DBSession = sessionmaker(bind=engine)

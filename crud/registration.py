@@ -17,6 +17,9 @@ DBSession = sessionmaker(bind=engine)
 
 
 def authenticateuser(loginformdata):  # loginverification
+    """
+    Function to authenticate user against the credentials saved in database.
+    """
     session = DBSession()
     try:
         user = session.query(User).filter_by(email=loginformdata['email']).one()
@@ -51,6 +54,9 @@ def user_loader(user_id):
         return None
 
 def registeruser(signupformdata):
+    """
+    Function to onboard a user on to the database. 
+    """
     session = DBSession()
     user = User(email=signupformdata['email'], userid=str(uuid.uuid4()), password=generate_password_hash(signupformdata['pwd']))
     session.add(user)

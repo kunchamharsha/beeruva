@@ -18,6 +18,9 @@ Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 
 def deletefile(fileid,currentuser):
+    """
+    Function to delete a file by file id. 
+    """
     session=DBSession()
     try:
         filedetails=session.query(Filedetails).filter_by(fileid=fileid).filter_by(userid=currentuser.userid).one()
