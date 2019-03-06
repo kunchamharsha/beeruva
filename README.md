@@ -1,8 +1,27 @@
 # Opendrive
 Opendrive is a self-hosted file cloud storage system. For organisations or individuals who'd like to store their data on their own private cloud open drive helps them manage their files on their server. 
 
+## Description
 
-## Setup process
+Opendrive provides 
+
+* Safe and Authorised access to users files from anywhere (provided you have access to the server)
+* Intuitive interface to upload, download and delete files
+
+Upcoming Features
+
+* File Sharing 
+* Encryption
+* On the fly compression 
+* File upload options to object storage services like s3 from aws
+* User Logs for admins
+* Drive statistics
+* File preview 
+* Android/IOS app to access your data from anywhere 
+* Responsive Interface to access the files from mobile browsers
+* Error Monitoring
+
+# Setup process
 
 
 ## Prerequisites
