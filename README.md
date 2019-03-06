@@ -3,21 +3,20 @@ Opendrive is a self-hosted file cloud storage system. For organisations or indiv
 
 #Prerequisites
 
-Operating system
->mac,
-
->linux
+Supporterd operating system's
+* mac
+* linux
 
 Database
->sqlite3
+* sqlite3
 
 Languages Used
->Python,
+* Python,
 
->Angularjs
+* Angularjs
 
 ORM Used
->SQLAlchemy
+* SQLAlchemy
 
 Python packages used
 
