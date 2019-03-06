@@ -146,10 +146,8 @@ delete: right click on the file to get delete option
 
 download:to download the file click on the download button below the file
 
-
 #scope of improvement
-check trello board https://trello.com/invite/b/D4skGYxt/40775ecf4eb4cf338e2f8a48b550533c/open-drive
-
+please raise issues or request feature changes via the issues section in github
 
 #contact details
 For any further queries you can mail me on kunchamharsha@gmail.com,
