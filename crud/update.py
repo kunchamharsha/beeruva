@@ -17,13 +17,17 @@ engine = create_engine('sqlite:///crud/beeruva.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 
-def addfile(fileid,actualfilename,currentuser):
+
+def renamefile(currentuser,data):
     """
-    Function to store file data in db.
+    Function to update file name in db.
     """
     session=DBSession()
-    filedetails=Filedetails(fileid=fileid,filename=actualfilename,fileuploadedon=datetime.datetime.now(),fileextension=actualfilename.split('.')[-1].lower(),userid=currentuser.userid)
-    session.add(filedetails)
-    session.commit()
-    session.close()
-    return 'Successfully Uploaded'
+    try:
+        filedetails=session.query(Filedetails).filter_by(fileid=data['fileid']).filter_by(userid=currentuser.userid).one()
+        filedetails.filename=data['filerename']
+        session.commit()
+        session.close()
+        return 'Successfully Uploaded'
+    except NoResultFound:
+        return 'You are not authorised to modify this file.'

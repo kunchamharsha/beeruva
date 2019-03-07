@@ -17,22 +17,33 @@ app.controller('search',function($scope,$http,Upload,toaster){
         return $http.get('/api/deletefile?id='+$scope.deletefileid).then(function(response,status){
             $scope.listoffiles=response.data;
             $scope.loadlistoffiles();
-            toaster.pop('success','file successfully deleted')
+            toaster.pop('success','File successfully deleted')
         });
     }
 
+    $scope.renameconfirmation=function(file){
+        var element = angular.element('#renamefile');
+        element.modal('show');
+        $scope.filetoberenamed=file.filename;
+        $scope.fileidofrenamedfile=file.fileid;
+    }
+
+    $scope.renamefile=function(){
+        $scope.datatobesent={}
+        $scope.datatobesent['filerename']=$scope.filetoberenamed
+        $scope.datatobesent['fileid']=$scope.fileidofrenamedfile
+        return $http.post('/api/rename',$scope.datatobesent).then(function(response,status){
+            $scope.listoffiles=response.data;
+            toaster.pop('success','File successfully rename')
+            $scope.filetoberenamed='';
+            $scope.fileidofrenamedfile='';
+            $scope.loadlistoffiles();            
+        });
+    }
 
     $scope.selected = 'None';
     
-    $scope.menuOptions = [
-        // NEW IMPLEMENTATION
-        {
-            text: 'Delete',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                $scope.deleteconfirmation($itemScope.files); 
-            }
-        }
-    ];
+   
 
 
     $scope.loadlistoffiles();
@@ -62,5 +73,27 @@ app.controller('search',function($scope,$http,Upload,toaster){
                     });
             }
     }
+    
+    
+    
+    $scope.menuOptions = [
+        // NEW IMPLEMENTATION
+        {
+            text:'Rename',
+            click: function($itemScope, $event, modelValue, text, $li){
+                $scope.renameconfirmation($itemScope.files);                 
+            }
+        },{
+            text: 'Delete',
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.deleteconfirmation($itemScope.files); 
+            }
+        },{
+            text: 'Info',
+            click: function ($itemScope, $event, modelValue, text, $li) {
+                $scope.showinfomodal($itemScope.files); 
+            }
+        }
+    ];
 
 });

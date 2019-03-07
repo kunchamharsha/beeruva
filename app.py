@@ -1,11 +1,13 @@
+import sys
+sys.path.insert(0,'./crud')
+
 from flask import Flask, render_template,request,redirect,url_for,send_file
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 import json
-import sys
-sys.path.insert(0,'./crud')
+
 
 from sqlalchemy import create_engine, and_
 from sqlalchemy.orm import sessionmaker,scoped_session
@@ -17,7 +19,7 @@ from sqlalchemy.pool import SingletonThreadPool
 import uuid
 import os
 import registration
-import read,insert,delete
+import read,insert,delete,update
 
 
 
@@ -34,7 +36,7 @@ admin = Admin(app)
 
 
 
-engine = create_engine('sqlite:///./crud/opendrive.db',poolclass=SingletonThreadPool)
+engine = create_engine('sqlite:///crud/beeruva.db',poolclass=SingletonThreadPool)
 Base = declarative_base() 
 session= scoped_session(sessionmaker(bind=engine))
 
@@ -160,6 +162,16 @@ def returnfiles():
     return read.listofilesuploaded(current_user)
 
 
+@app.route('/api/rename',methods=['POST'])
+@login_required
+def renamefile():
+    """
+    Function to rename a file.
+    """
+    data=json.loads(request.data)
+    return update.renamefile(current_user,data)
+
+
 @app.route('/api/deletefile',methods=['GET'])
 @login_required
 def deletefile():
@@ -232,4 +244,4 @@ app.config['static_url_path'] ='/static'
 app.config['SECRET_KEY'] = 'AZXSDM11233108123A'
 
 if __name__=='__main__':
-    app.run('0.0.0.0',threaded=True)
+    app.run('0.0.0.0',debug=True)
