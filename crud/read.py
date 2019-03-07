@@ -30,6 +30,7 @@ def listofilesuploaded(currentuser):
         filedata['fileid']=i.fileid        
         filedata['filename']=i.filename        
         filedata['filetype']=i.fileextension
+        filedata['Upload date']=i.fileuploadedon
         listoffiles.append(filedata)
     return jsonify(listoffiles)
 

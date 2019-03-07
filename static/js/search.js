@@ -28,6 +28,12 @@ app.controller('search',function($scope,$http,Upload,toaster){
         $scope.fileidofrenamedfile=file.fileid;
     }
 
+    $scope.showinfomodal=function(file){
+        var element = angular.element('#fileinfomodal');
+        element.modal('show');
+        $scope.infofile=file;
+    }
+
     $scope.renamefile=function(){
         $scope.datatobesent={}
         $scope.datatobesent['filerename']=$scope.filetoberenamed
