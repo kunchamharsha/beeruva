@@ -6,7 +6,7 @@ Beeruva is a self-hosted file cloud storage system. For organisations or individ
 Beeruva provides 
 
 * Safe and Authorised access to users files from anywhere (provided you have access to the server)
-* Intuitive interface to upload, download and delete files
+* Intuitive interface to upload, download,rename and delete files
 
 Upcoming Features
 
