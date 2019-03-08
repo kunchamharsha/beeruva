@@ -176,6 +176,10 @@ functions
 
 * download:to download the file click on the download button below the file
 
+* rename: to rename an uploaded file, right click on the file and click rename
+
+* info: to get information about the file, right click on the file and click info 
+
 
 ## Development Log
 
