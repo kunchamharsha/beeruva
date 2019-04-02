@@ -12,7 +12,7 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.5.6/angular-sanitize.min.js"></script>
             <script src="https://code.angularjs.org/1.2.0/angular-animate.min.js" ></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-toaster/1.1.0/toaster.min.js"></script>
-            
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">            
 
             <script src="/js/module.js"></script>
             <script src="/js/search.js"></script>
@@ -166,12 +166,28 @@
                 <toaster-container toaster-options="{'time-out':1000}"></toaster-container>                    
                 <div class="container">
                     <div class="row">
-                        <div ng-repeat="files in listoffiles track by $index" class="card" style="width: 15rem; margin:5px;" context-menu="menuOptions" context-menu-empty-text="'SOME TEXT FOR EMPTY'">
-                            <img class="card-img-top" ng-if='files.filetype!="jpg" && files.filetype!="png" && files.filetype!="jpeg"' onerror="this.src='/images/default.png'" ng-src="/images/[{[files.filetype]}].png" alt="Card image cap" ng-cloak>
-                            <img class="card-img-top" ng-if='files.filetype=="jpg" || files.filetype=="png" || files.filetype=="jpeg"' ng-src="/cdn/[{[files.fileid]}]" alt="Card image cap" ng-cloak>
-                            <div class="card-body">
-                                <h5 class="card-title">[{[files.filename]}]</h5>
-                                <a href="/cdn/[{[files.filename]}]" class="btn btn-primary stretched-link" download>Download File</a>                                
+                        <div ng-repeat="files in listoffiles track by $index" class="card" style="width: 250px; margin:5px;height:165px;" context-menu="menuOptions" context-menu-empty-text="'SOME TEXT FOR EMPTY'">
+                            <div style="max-height:150px;">
+                                <img class="img-responsive card-img-top" ng-if='files.filetype!="jpg" && files.filetype!="png" && files.filetype!="jpeg"' style="height:120px;object-fit:contain;" onerror="this.src='/images/default.png'" ng-src="/images/[{[files.filetype]}].png" alt="Card image cap" ng-cloak>
+                                <img class="img-responsive card-img-top" ng-if='files.filetype=="jpg" || files.filetype=="png" || files.filetype=="jpeg"' style="height:120px;object-fit:contain;" ng-src="/cdn/[{[files.fileid]}]" alt="Card image cap" ng-cloak>
+                            </div>
+                            <div class="card-footer" style="max-height:45px;">
+                                <div class="media">
+                                      
+                                        <div class="media-body">
+                                                <div style="white-space:nowrap;text-overflow:ellipsis;width:175px;overflow: hidden;display:inline-block;">
+                                                        <span>[{[files.filename]}]</span>
+                                                    </div>                                        </div>
+                                        <div class="media-right">
+                                                <a href="/cdn/[{[files.filename]}]" download>
+                                                    <i class="fas fa-download">                                        
+                                                    </i>
+                                                </a>
+                                        </div>
+                                </div>
+                               
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>                    
