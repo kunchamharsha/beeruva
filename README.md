@@ -1,5 +1,5 @@
 # Beeruva
-Beeruva is a self-hosted file cloud storage system. For organisations or individuals who'd like to store their data on their own private cloud open drive helps them manage their files on their server. 
+Beeruva is a self-hosted file hosting system. For organisations or individuals who'd like to store their data on their own private cloud open drive helps them manage their files on their server. 
 
 ## Description
 
@@ -175,6 +175,10 @@ functions
 * delete: right click on the file to get delete option
 
 * download:to download the file click on the download button below the file
+
+* rename: to rename an uploaded file, right click on the file and click rename
+
+* info: to get information about the file, right click on the file and click info 
 
 
 ## Development Log
