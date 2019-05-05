@@ -31,3 +31,20 @@ def renamefile(currentuser,data):
         return 'Successfully Uploaded'
     except NoResultFound:
         return 'You are not authorised to modify this file.'
+
+def movefiles(parentid, filelist, currentuser):
+    """
+    Function to update file name in db.
+    """
+    session=DBSession()
+    try:
+        files=session.query(Filedetails).filter(Filedetails.fileid.in_(filelist))
+
+        for f in files:
+             f.parentid = parentid
+
+        session.commit()
+        session.close()
+        return 'Successfully Uploaded'
+    except NoResultFound:
+        return 'You are not authorised to modify this file.'

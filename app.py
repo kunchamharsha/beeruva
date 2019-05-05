@@ -37,7 +37,7 @@ admin = Admin(app)
 
 
 engine = create_engine('sqlite:///crud/beeruva.db',poolclass=SingletonThreadPool)
-Base = declarative_base() 
+Base = declarative_base()
 session= scoped_session(sessionmaker(bind=engine))
 
 admin.add_view(ModelView(User, session))
@@ -67,11 +67,11 @@ def unauthorized_handler():
 @app.route('/')
 def onboardingpage():
     """
-    Function to render the onboarding page. 
+    Function to render the onboarding page.
     """
     try:
         current_user.email
-        return redirect(url_for('render_searchpage'))        
+        return redirect(url_for('render_searchpage'))
     except AttributeError:
         return render_template('registration.html')
 
@@ -79,11 +79,11 @@ def onboardingpage():
 @app.route('/login/<notification>')
 def onboardingpagewithnotification(notification):
     """
-    Function to render a login page with a notification 
+    Function to render a login page with a notification
     """
     try:
         current_user.email
-        return redirect(url_for('home'))        
+        return redirect(url_for('home'))
     except AttributeError:
         print 'jumped'
         if notification==None:
@@ -131,7 +131,7 @@ def register_user():
 @app.route('/api/authenticate', methods=['POST'])
 def loginauthorisation():
     """
-    Function to authorise a username and password against the credentials 
+    Function to authorise a username and password against the credentials
     present in the database and redirect the user to home page.
     """
     print request.form
@@ -161,6 +161,23 @@ def returnfiles():
     """
     return read.listofilesuploaded(current_user)
 
+@app.route('/api/getchildren',methods=['POST'])
+@login_required
+def getchildren():
+    """
+    Function to return list of files uploaded by the user.
+    """
+    data=json.loads(request.data)
+    return read.getchildren(data["folderid"], current_user)
+
+@app.route('/api/getdescendents',methods=['POST'])
+@login_required
+def getdescendents():
+    """
+    Function to return list of files uploaded by the user.
+    """
+    data=json.loads(request.data)
+    return read.getdescendents(data["folderid"], current_user)
 
 @app.route('/api/rename',methods=['POST'])
 @login_required
@@ -189,6 +206,9 @@ def newfileupload():
     """
     function to upload user to server.
     """
+
+    parentid = request.form['parentid']
+
     if request.files:
         reqlen=len(request.files)
         for i in xrange(reqlen):
@@ -200,7 +220,7 @@ def newfileupload():
                 filename = str(uuid.uuid4())
                 files.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
                 try:
-                    json.dumps(insert.addfile(filename,actualfilename,current_user))
+                    json.dumps(insert.addfile(parentid,filename,actualfilename,current_user))
                 except Exception as e:
                     print e
                     print 'invalid'
@@ -211,6 +231,47 @@ def newfileupload():
     else:
         return 'No file Uploaded'
     #return json.dumps(insert.addnewpost(request.data,actualfilename,current_user))
+
+
+@app.route('/api/createfolder',methods=['POST'])
+@login_required
+def createnewfolder():
+    """
+    function to create folder.
+    """
+    data=json.loads(request.data)
+    parentid = data["parentid"]
+    folderlist = data["folderlist"]
+    listlen = len(folderlist)
+    if listlen > 0:
+        for i in xrange(listlen):
+            fileid = str(uuid.uuid4())
+            try:
+                insert.createfolder(parentid,fileid,folderlist[i],current_user)
+            except Exception as e:
+                print e
+                print 'invalid'
+        return 'Successfully created folder(s)'
+    else:
+        return 'No folders created'
+
+@app.route('/api/movefiles',methods=['POST'])
+@login_required
+def movefiles():
+    """
+    function to move files.
+    """
+    data=json.loads(request.data)
+    parentid = data["parentid"]
+    filelist = data["filelist"]
+    if len(filelist) > 0:
+        try:
+            return update.movefiles(parentid,filelist,current_user)
+        except Exception as e:
+            print e
+            print 'invalid'
+    else:
+        return 'No folders created'
 
 ################################################################
 

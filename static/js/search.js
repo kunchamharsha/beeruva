@@ -1,7 +1,13 @@
-app.controller('search',function($scope,$http,Upload,toaster){
+app.controller('search',function($scope,$cookies,$http,Upload,toaster){
 
     $scope.loadlistoffiles=function(){
-        return $http.get('/api/returnfiles').then(function(response,status){
+        if(!$cookies.get("parentid") || $cookies.get("parentid").length == 0){
+            $cookies.put("parentid" , "/");
+        }
+        var req_obj = {
+            "folderid" : $cookies.get("parentid")
+        }
+        return $http.post('/api/getchildren', req_obj).then(function(response,status){
             $scope.filedata=response.data;
             $scope.listoffiles=$scope.filedata.reverse()
         });
@@ -11,9 +17,11 @@ app.controller('search',function($scope,$http,Upload,toaster){
         var element = angular.element('#deletefileconfirmation');
         element.modal('show');
         $scope.deletefileid=file.fileid
+        $scope.deletefiletype=file.filetype
     }
 
     $scope.deletefile=function(){
+
         return $http.get('/api/deletefile?id='+$scope.deletefileid).then(function(response,status){
             $scope.listoffiles=response.data;
             $scope.loadlistoffiles();
@@ -26,6 +34,11 @@ app.controller('search',function($scope,$http,Upload,toaster){
         element.modal('show');
         $scope.filetoberenamed=file.filename;
         $scope.fileidofrenamedfile=file.fileid;
+    }
+
+    $scope.getfoldername=function(file){
+        var element = angular.element('#getfoldername');
+        element.modal('show');
     }
 
     $scope.showinfomodal=function(file){
@@ -43,32 +56,50 @@ app.controller('search',function($scope,$http,Upload,toaster){
             toaster.pop('success','File successfully rename')
             $scope.filetoberenamed='';
             $scope.fileidofrenamedfile='';
-            $scope.loadlistoffiles();            
+            $scope.loadlistoffiles();
+        });
+    }
+
+    $scope.createfolder=function(){
+        if(!$cookies.get("parentid") || $cookies.get("parentid").length == 0){
+            $cookies.put("parentid" , "/");
+        }
+        var req_obj = {
+            "parentid" : $cookies.get("parentid"),
+            "folderlist": [$scope.foldername]
+        }
+        $scope.activategif=true;
+        return $http.post('/api/createfolder',req_obj).then(function(response,status){
+            $scope.activategif=false;
+            toaster.pop('success','Folder successfully created')
+            $scope.loadlistoffiles();
         });
     }
 
     $scope.selected = 'None';
-    
-   
+
+
 
 
     $scope.loadlistoffiles();
 
     $scope.uploadfile=function(){
             files=$scope.files
-            console.log(files)
+            if(!$cookies.get("parentid") || $cookies.get("parentid").length == 0){
+                $cookies.put("parentid" , "/");
+            }
             if(files!=null){
                     $scope.activategif=true;
                     Upload.upload({
                         url: '/api/upload',
                         method:'POST',
-                        data:{files:files}
+                        data:{files:files, "parentid" : $cookies.get("parentid")}
                     }).success(function (resp) {
                         $scope.activategif=false;
                         console.log("Hello")
-                        toaster.pop('success','File upload successful!')        
+                        toaster.pop('success','File upload successful!')
                     }, function (resp) {
-                        toaster.pop('fail','Uploading '+files.filename+' failed due to'+resp.status)   
+                        toaster.pop('fail','Uploading '+files.filename+' failed due to'+resp.status)
                         //console.log('Error status: ' + resp.status);
                     }, function (evt) {
                         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
@@ -79,25 +110,25 @@ app.controller('search',function($scope,$http,Upload,toaster){
                     });
             }
     }
-    
-    
-    
+
+
+
     $scope.menuOptions = [
         // NEW IMPLEMENTATION
         {
             text:'Rename',
             click: function($itemScope, $event, modelValue, text, $li){
-                $scope.renameconfirmation($itemScope.files);                 
+                $scope.renameconfirmation($itemScope.files);
             }
         },{
             text: 'Delete',
             click: function ($itemScope, $event, modelValue, text, $li) {
-                $scope.deleteconfirmation($itemScope.files); 
+                $scope.deleteconfirmation($itemScope.files);
             }
         },{
             text: 'Info',
             click: function ($itemScope, $event, modelValue, text, $li) {
-                $scope.showinfomodal($itemScope.files); 
+                $scope.showinfomodal($itemScope.files);
             }
         }
     ];

@@ -36,7 +36,9 @@ class Filedetails(Base):
     fileid=Column(VARCHAR(36),primary_key=True)
     userid=Column(VARCHAR(36),ForeignKey('user.userid'))
     filename=Column(VARCHAR(128))
+    parentid=Column(VARCHAR(36),ForeignKey('user.userid'), nullable = False)
     fileextension=Column(VARCHAR(128))
+    filetype=Column(VARCHAR(5))
     fileuploadedon=Column(DateTime)
 
 
