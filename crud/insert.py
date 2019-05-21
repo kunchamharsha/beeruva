@@ -17,13 +17,24 @@ engine = create_engine('sqlite:///crud/beeruva.db')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 
-def addfile(fileid,actualfilename,currentuser):
+def addfile(parentid,fileid,actualfilename,currentuser):
     """
     Function to store file data in db.
     """
     session=DBSession()
-    filedetails=Filedetails(fileid=fileid,filename=actualfilename,fileuploadedon=datetime.datetime.now(),fileextension=actualfilename.split('.')[-1].lower(),userid=currentuser.userid)
+    filedetails=Filedetails(parentid=parentid,fileid=fileid,filename=actualfilename,fileuploadedon=datetime.datetime.now(),fileextension=actualfilename.split('.')[-1].lower(),filetype='f',userid=currentuser.userid)
     session.add(filedetails)
     session.commit()
     session.close()
     return 'Successfully Uploaded'
+
+def createfolder(parentid,fileid,actualfilename,currentuser):
+    """
+    Function to store folder data in db.
+    """
+    session=DBSession()
+    filedetails=Filedetails(parentid=parentid,fileid=fileid,filename=actualfilename,fileuploadedon=datetime.datetime.now(),fileextension=None,filetype='d',userid=currentuser.userid)
+    session.add(filedetails)
+    session.commit()
+    session.close()
+    return 'Successfully Created'

@@ -1,4 +1,4 @@
-app=angular.module('app',['ngFileUpload','ui.bootstrap.contextMenu','toaster'])
+app=angular.module('app',['ngFileUpload','ui.bootstrap.contextMenu','toaster','ngCookies'])
 app.config(function($interpolateProvider) {
     $interpolateProvider.startSymbol('[{[');
     $interpolateProvider.endSymbol(']}]');
