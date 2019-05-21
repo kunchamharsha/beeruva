@@ -191,7 +191,7 @@ functions
 
 ## Development Log
 
-Access development log at [tymline.co/opendrive](https://tymline.co/ramharsha/beeruva)
+Access development log at [tymline.co/opendrive](https://tymline.co/ramharsha/opendrive)
 
 ## Scope of Improvement
 
